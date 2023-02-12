@@ -1,3 +1,9 @@
 from django.contrib import admin
 
-# Register your models here.
+from authapp import models
+
+
+@admin.register(models.Users)
+class CustomUserAdmin(admin.ModelAdmin):
+    list_display = ["id", "username", "email"]
+    ordering = ["-id"]
