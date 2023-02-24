@@ -13,5 +13,5 @@ class TODOModelSerializer(ModelSerializer):
     project = ProjectModelSerializer()
     
     class Meta:
-        model = Project
+        model = TODO
         fields = '__all__'
