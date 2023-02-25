@@ -4,9 +4,9 @@ from authapp.models import Users
 class Project(models.Model):
     name = models.CharField(max_length=32)
     repository = models.URLField(unique=True)
-    users = models.ManyToManyField(Users)
+    authors = models.ManyToManyField(Users)
 
-    def __str__(self) -> str:
+    def __str__(self):
         return self.name
 
 class TODO(models.Model):
@@ -14,7 +14,7 @@ class TODO(models.Model):
     text = models.TextField()
     created = models.DateTimeField(auto_now_add=True)
     updated = models.DateTimeField(auto_now=True)
-    author = models.OneToOneField(Users)
+    author = models.OneToOneField(Users, on_delete=models.DO_NOTHING)
     is_active = models.BooleanField(default=True)
 
     def __str__(self) -> str:

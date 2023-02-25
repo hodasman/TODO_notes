@@ -18,3 +18,6 @@ class Users(AbstractBaseUser, PermissionsMixin):
     objects = UserManager()
 
     USERNAME_FIELD = "username"
+
+    def __str__(self):
+        return self.username
