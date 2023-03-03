@@ -15,4 +15,4 @@ class TODOModelSerializer(ModelSerializer):
     
     class Meta:
         model = TODO
-        fields = ('project', 'text', 'created', 'author')
+        fields = ('id', 'project', 'text', 'created', 'author', 'is_active')
