@@ -2,7 +2,7 @@ from rest_framework.serializers import ModelSerializer, HyperlinkedModelSerializ
 from .models import Project, TODO
 # from authapp.serializers import UsersModelSerializer
 
-class ProjectModelSerializer(HyperlinkedModelSerializer):
+class ProjectModelSerializer(ModelSerializer):
     authors = StringRelatedField(many=True)
     # authors = HyperlinkedRelatedField(view_name='users-detail', many=True, read_only=True)
 
@@ -10,7 +10,7 @@ class ProjectModelSerializer(HyperlinkedModelSerializer):
         model = Project
         fields = '__all__'
 
-class TODOModelSerializer(HyperlinkedModelSerializer):
+class TODOModelSerializer(ModelSerializer):
     
     
     class Meta:

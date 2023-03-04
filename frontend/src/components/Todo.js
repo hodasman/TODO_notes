@@ -4,7 +4,7 @@ import React from "react";
 const TODOItem = ({todo}) => {
     return (
         <tr>
-            <td>{todo.project.name}</td>
+            <td>{todo.project}</td>
             <td>{todo.text}</td>
             <td>{todo.created}</td>
             <td>{todo.author}</td>
