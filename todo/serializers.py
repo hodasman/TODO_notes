@@ -1,4 +1,4 @@
-from rest_framework.serializers import ModelSerializer, StringRelatedField, HyperlinkedModelSerializer, HyperlinkedRelatedField
+from rest_framework.serializers import ModelSerializer, HyperlinkedModelSerializer, StringRelatedField, HyperlinkedModelSerializer, HyperlinkedRelatedField
 from .models import Project, TODO
 # from authapp.serializers import UsersModelSerializer
 
