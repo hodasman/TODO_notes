@@ -15,6 +15,10 @@ class Users(AbstractBaseUser, PermissionsMixin):
     is_superuser = models.BooleanField(
         default=False,
     )
+    is_active = models.BooleanField(
+        default=True,
+
+    )
     objects = UserManager()
 
     USERNAME_FIELD = "username"
