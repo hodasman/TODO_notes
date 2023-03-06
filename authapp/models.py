@@ -1,8 +1,8 @@
 from django.contrib.auth.base_user import AbstractBaseUser
-from django.contrib.auth.models import PermissionsMixin, UserManager
+from django.contrib.auth.models import PermissionsMixin, UserManager, AbstractUser
 from django.db import models
 
-class Users(AbstractBaseUser, PermissionsMixin):
+class Users(AbstractUser, PermissionsMixin):
     username = models.CharField(max_length=64, unique=True)
     first_name = models.CharField( max_length=150)
     last_name = models.CharField(max_length=150)
