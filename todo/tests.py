@@ -54,3 +54,13 @@ class TestProjectViewSet(TestCase):
 
     def tearDown(self):
         pass
+
+class TestTodoViewSet(APITestCase):
+    def test_get_list(self):
+        admin = Users.objects.create_superuser('admin', 'admin@admin.com', 'admin123')
+        self.client.login(username='admin', password='admin123')
+        response = self.client.get('/api/todo/')
+        self.assertEqual(response.status_code, status.HTTP_200_OK)
+
+    def tearDown(self):
+        pass
