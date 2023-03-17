@@ -3,7 +3,7 @@ from django.test import TestCase
 from rest_framework import status
 from rest_framework.test import APIRequestFactory, force_authenticate
 from rest_framework.test import APIClient, APISimpleTestCase, APITestCase
-# from mixer.backend.django import mixer
+from mixer.backend.django import mixer
 from authapp.models import Users
 from .views import ProjectModelViewSet, TODOViewSet
 from .models import TODO, Project
@@ -56,10 +56,21 @@ class TestProjectViewSet(TestCase):
         pass
 
 class TestTodoViewSet(APITestCase):
+    def setUp(self):
+        admin = Users.objects.create_superuser('admin', 'admin@admin.com',
+                                                'admin123')
+        
     def test_get_list(self):
-        admin = Users.objects.create_superuser('admin', 'admin@admin.com', 'admin123')
         self.client.login(username='admin', password='admin123')
         response = self.client.get('/api/todo/')
+        self.assertEqual(response.status_code, status.HTTP_200_OK)
+
+    def test_edit_mixer(self):
+        todo = mixer.blend(TODO)
+        print(todo.project)
+        self.client.login(username='admin', password='admin123')
+        response = self.client.put(f'/api/todo/{todo.id}/', {'project': todo.project.id, 
+            'text': 'new text2', 'is_active': True, 'author': todo.author.id})
         self.assertEqual(response.status_code, status.HTTP_200_OK)
 
     def tearDown(self):
