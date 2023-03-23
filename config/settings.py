@@ -49,6 +49,7 @@ INSTALLED_APPS = [
     'django_filters',
     'rest_framework.authtoken',
     'rest_framework_simplejwt.token_blacklist',
+    'graphene_django'
 ]
 
 MIDDLEWARE = [
@@ -168,3 +169,6 @@ REST_FRAMEWORK = {
 
 }
 
+GRAPHENE = {
+"SCHEMA": "todo.schema.schema"
+}
