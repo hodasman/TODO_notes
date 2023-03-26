@@ -27,6 +27,7 @@ from rest_framework_simplejwt.views import (
 )
 from authapp.views import UsersCustomViewSet
 from todo.views import ProjectModelViewSet, TODOViewSet
+from graphene_django.views import GraphQLView
 
 schema_view = get_schema_view(
     openapi.Info(
@@ -57,5 +58,6 @@ urlpatterns = [
     re_path(r'^swagger(?P<format>\.json|\.yaml)$',
 schema_view.without_ui(cache_timeout=0), name='schema-json'),
     path('swagger/', schema_view.with_ui('swagger', cache_timeout=0),
-name='schema-swagger-ui')
+name='schema-swagger-ui'),
+    path("graphql/", GraphQLView.as_view(graphiql=True)),
 ]
