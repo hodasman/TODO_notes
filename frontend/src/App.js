@@ -82,7 +82,29 @@ class App extends React.Component {
 
   componentDidMount() {
     this.get_token_from_storage()
-    
+
+  }
+
+  deleteProject(id) {
+    const headers = this.get_headers()
+    axios.delete(`http://127.0.0.1:8000/api/projects/${id}`, { headers, headers })
+      .then(response => {
+        this.setState({
+          projects: this.state.projects.filter((item) => item.id !==
+            id)
+        })
+      }).catch(error => console.log(error))
+  }
+
+  deleteTodo(id) {
+    const headers = this.get_headers()
+    axios.delete(`http://127.0.0.1:8000/api/todo/${id}`, { headers, headers })
+      .then(response => {
+        this.setState({
+          todos: this.state.todos.filter((item) => item.id !==
+            id)
+        })
+      }).catch(error => console.log(error))
   }
 
   render() {
@@ -108,11 +130,13 @@ class App extends React.Component {
             </ul>
           </nav>
           <Switch>
-            <Route exact path='/' component={() => <ProjectList projects={this.state.projects} />} />
+            <Route exact path='/' component={() => <ProjectList projects={this.state.projects} 
+            deleteProject={(id)=>this.deleteProject(id)}/>} />
             <Route exact path='/users' component={() => <UserList users={this.state.users} />} />
-            <Route exact path='/todos' component={() => <TODOList todos={this.state.todos} />} />
+            <Route exact path='/todos' component={() => <TODOList todos={this.state.todos} 
+            deleteTodo={(id)=>this.deleteTodo(id)}/>} />
             <Route exact path='/login' component={() => <LoginForm
-              get_token={(username, password) => this.get_token(username, password)} />} />
+get_token={(username, password) => this.get_token(username, password)} />} />
             <Route component={NotFound404} />
           </Switch>
         </BrowserRouter>
