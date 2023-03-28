@@ -1,6 +1,6 @@
 from rest_framework.serializers import ModelSerializer, HyperlinkedModelSerializer, StringRelatedField, HyperlinkedModelSerializer, HyperlinkedRelatedField
 from .models import Project, TODO
-# from authapp.serializers import UsersModelSerializer
+
 
 class ProjectModelSerializer(ModelSerializer):
     authors = StringRelatedField(many=True)

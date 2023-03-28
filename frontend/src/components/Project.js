@@ -15,6 +15,7 @@ const ProjectItem = ({ project, deleteProject }) => {
 
 const ProjectList = ({ projects, deleteProject }) => {
     return (
+        <div>
         <table border="1">
             <tr>
                 <th>Name</th>
@@ -24,6 +25,8 @@ const ProjectList = ({ projects, deleteProject }) => {
             </tr>
             {projects.map((project) => <ProjectItem project={project} deleteProject={deleteProject}/>)}
         </table>
+        <Link to='projects/create'>Create</Link>
+        </div>
     )
 }
 export default ProjectList
