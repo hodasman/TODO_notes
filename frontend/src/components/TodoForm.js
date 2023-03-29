@@ -2,7 +2,7 @@ import React from 'react'
 class TodoForm extends React.Component {
     constructor(props) {
         super(props)
-        this.state = { project: props.projects[0]?.id, text: '', author: props.users[0]?.id }
+        this.state = { project: props.projects[0]?.id, text: '', author: props.authors[0]?.id }
     }
     handleChange(event) {
         this.setState(
@@ -28,14 +28,15 @@ class TodoForm extends React.Component {
                 </div>
                 <div className="form-group">
                     <label for="text">text</label>
-                    <input type="text" className="form-control" name="text"
+                    <textarea type="text" className="form-control" name="text"
                         value={this.state.text} onChange={(event) => this.handleChange(event)} />
+
                 </div>
                 <div className="form-group">
                     <label for="author">author</label>
                     <select name="author" className='form-control'
                         onChange={(event) => this.handleChange(event)}>
-                        {this.props.users.map((item) => <option
+                        {this.props.authors.map((item) => <option
                             value={item.id}>{item.username}</option>)}
                     </select>
                 </div>

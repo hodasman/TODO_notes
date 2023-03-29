@@ -166,7 +166,7 @@ class App extends React.Component {
             <Route exact path='/todos' component={() => <TODOList todos={this.state.todos}
               deleteTodo={(id) => this.deleteTodo(id)} />} />
             <Route exact path='/todos/create' component={() => <TodoForm projects={this.state.projects}
-              users={this.state.users} createTodo={(project, text, author) => this.createTodo(project, text, author)} />} />
+              authors={this.state.users} createTodo={(project, text, author) => this.createTodo(project, text, author)} />} />
             <Route exact path='/login' component={() => <LoginForm
               get_token={(username, password) => this.get_token(username, password)} />} />
             <Route component={NotFound404} />
