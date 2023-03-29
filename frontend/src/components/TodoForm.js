@@ -28,15 +28,14 @@ class TodoForm extends React.Component {
                 </div>
                 <div className="form-group">
                     <label for="text">text</label>
-                    <input type="textarea" className="form-control" name="text"
+                    <input type="text" className="form-control" name="text"
                         value={this.state.text} onChange={(event) => this.handleChange(event)} />
-
                 </div>
                 <div className="form-group">
                     <label for="author">author</label>
                     <select name="author" className='form-control'
                         onChange={(event) => this.handleChange(event)}>
-                        {this.props.authors.map((item) => <option
+                        {this.props.users.map((item) => <option
                             value={item.id}>{item.username}</option>)}
                     </select>
                 </div>
