@@ -1,0 +1,1 @@
+[{"model": "todo.project", "pk": 1, "fields": {"name": "Project_1", "repository": "http://github.com", "authors": []}}, {"model": "todo.project", "pk": 2, "fields": {"name": "Project_2", "repository": "http://gb.ru", "authors": []}}]
