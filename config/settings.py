@@ -25,6 +25,7 @@ SECRET_KEY = 'django-insecure-*b1o()m^s-5wb2k77q@*=w#$_8or4jdnx$f_%)925%%@%nrpuh
 # SECURITY WARNING: don't run with debug turned on in production!
 DEBUG = True
 
+                
 ALLOWED_HOSTS = []
 
 CORS_ALLOWED_ORIGINS = [
@@ -97,6 +98,9 @@ DATABASES = {
         'PASSWORD': 'dante123456',
         'HOST': 'db',
         'PORT': '5432',
+
+        # "ENGINE": "django.db.backends.sqlite3",
+        # "NAME": BASE_DIR / "db.sqlite3",
     }
 }
 
@@ -159,8 +163,8 @@ REST_FRAMEWORK = {
         'PAGE_SIZE': 100,
 
     'DEFAULT_PERMISSION_CLASSES': [
-        'rest_framework.permissions.IsAuthenticated'
-        # 'rest_framework.permissions.DjangoModelPermissionsOrAnonReadOnly'
+        # 'rest_framework.permissions.IsAuthenticated'
+        'rest_framework.permissions.DjangoModelPermissionsOrAnonReadOnly'
     ],
     'DEFAULT_AUTHENTICATION_CLASSES': [
         'rest_framework.authentication.BasicAuthentication',
